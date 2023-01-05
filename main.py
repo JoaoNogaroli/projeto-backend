@@ -31,7 +31,7 @@ async def root():
     return {"message": "Hello World"}
 
 @app.get("/ativo/{teste}")
-async def root(teste):
+async def teste1(teste):
     lista = os.listdir(os.getcwd()+'/datas')
     teste = teste.upper()
     ativo = "df_"+teste
@@ -59,3 +59,13 @@ async def root(teste):
     #         # df = pd.DataFrame(data)
     #         return {'json_obj':data}
    
+
+
+@app.get('/lista_ativo')
+async def teste2():
+    lista = os.listdir(os.getcwd()+'/datas')
+    lista_final = []
+    for item in lista:
+        item = item.split('df_')[1]
+        lista_final.append(item)
+    return {'data':lista_final}
